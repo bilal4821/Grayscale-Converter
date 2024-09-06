@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grayscale Converter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style2.css" />
+
+    <style>
+      html,
+      body {
+        font-family: "Calibri", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <h1 class="text-center text-3xl fw-bold text-muted">
+        Color Grayscale converter
+      </h1>
+      <div
+        class="p-4 rounded bg-white shadow-lg w-100"
+        style="max-width: 330px"
+      >
+        <div class="mb-4">
+          <label for="color-pick" class="form-label">Pick a color</label>
+          <input
+            name="color-pick"
+            type="color"
+            id="colorpicker"
+            class="form-control"
+          />
+        </div>
+        <div class="d-flex justify-content-between gap-3">
+          <div class="text-center">
+            <div
+              id="color-display"
+              class="border shadow rounded"
+              style="height: 120px; width: 120px"
+            ></div>
+            <div class="mt-2">Color Display</div>
+          </div>
+          <div class="text-center">
+            <div
+              id="grayscale"
+              class="border shadow rounded"
+              style="height: 120px; width: 120px"
+            ></div>
+            <div class="mt-2">Grayscale Display</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mt-3 d-flex flex-column align-items-center justify-content-center"
+    >
+      <div
+        class="p-4 rounded bg-white shadow-lg w-100"
+        style="max-width: 300px"
+      >
+        <h3 style="color: #475569">Color Info</h3>
+        <hr />
+        <b>RGB</b>:<i>rgb</i>
+        (
+        <b
+          ><span id="rgb-red" style="color: red">0</span>
+          ,
+          <span id="rgb-green" style="color: green">0</span>
+          ,
+          <span id="rgb-blue" style="color: blue">0</span></b
+        >
+        )
+        <br />
+        <b>CMYK</b>: <i>cmyk</i>
+        (
+        <span  style="color: cyan"><b>0</b></span>
+        ,
+        <span style="color: magenta"><b>0</b></span>
+        ,
+        <span style="color: rgb(255, 255, 12)"><b>0</b></span>
+        ,
+        <span style="color: black"><b>0</b></span>
+        )
+        <br />
+        <b>HSL</b>: <i>hsl</i>
+        (
+        <span style="color: black"><b>0</b></span>
+        ,
+        <span style="color: black"><b>0</b></span>
+        ,
+        <span style="color: black"><b>0</b></span>
+        )
+        <br />
+        <b>Hex</b>: <b>#000000</b>
+        <br />
+        <h3 style="color: #475569">Grayscale Info</h3>
+        <hr />
+        <b>RGB</b>:<i>rgb</i>
+        (
+        <span style="color: red"><b>0</b></span>
+        ,
+        <span style="color: green"><b>0</b></span>
+        ,
+        <span style="color: blue"><b>0</b></span>
+        )
+        <br />
+
+        <b>Luminosity</b>: 0
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script2.js"></script>
+  </body>
+</html>
