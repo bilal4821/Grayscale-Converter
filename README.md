@@ -18,4 +18,4 @@ A grayscale color converter is a web tool that allows users to convert color val
 -  Allows users to enter color codes in various formats (e.g., hex, RGB) and view their grayscale counterparts.
 
 ## Preview 
-![alt text](grayscale.PNG)
+![alt text](preview.PNG)
