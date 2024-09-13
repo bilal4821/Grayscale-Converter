@@ -2,8 +2,9 @@ $(document).ready(function () {
   function getColor(event) {
     const hexColor = event.target.value;
     console.log(hexColor);
-
     $("#color-display").css("background-color", hexColor);
+
+    $("#hex").css("color", hexColor);
 
     const [r, g, b] = hexa_to_rgb(hexColor);
     $("#rgb-red").html(`${r}`);
@@ -30,6 +31,23 @@ $(document).ready(function () {
     $("#light-l").html(`${l}`);
 
     $("#hex").html(event.target.value);
+
+    const [grayscale_rgb1] = colorToGrayscale(r, g, b);
+    const [c1, m1, y1, k1] = grayscaleRgbToCmyk(grayscale_rgb1);
+
+    $("#gray-cyan").html(`${c1}`);
+    $("#gray-magenta").html(`${m1}`);
+    $("#gray-yellow").html(`${y1}`);
+    $("#gray-black").html(`${k1}`);
+
+    const [grayscale_rgb2] = colorToGrayscale(r, g, b);
+    const [h1, s1, l1] = grayscaleRgbToHsl(grayscale_rgb2);
+    $("#gray-hue").html(`${h1}`);
+    $("#gray-saturation").html(`${s1}`);
+    $("#gray-light").html(`${l1}`);
+
+    const grayscaleHex1 = grayscaleRgbToHex(grayscale_rgb);
+    $("#hex1").html(`${grayscaleHex1}`);
 
     const [Luminosity] = colorToLuminosity(r, g, b);
     $("#Luminosity").html(` ${Luminosity}`);
@@ -89,7 +107,6 @@ $(document).ready(function () {
           h = (r - g) / d + 4;
           break;
       }
-
       h /= 6;
     }
 
@@ -110,8 +127,40 @@ $(document).ready(function () {
     return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
   }
 
+  function grayscaleRgbToCmyk(grayscale_rgb1) {
+    const k = 1 - grayscale_rgb1 / 255;
+    const c = 0;
+    const m = 0;
+    const y = 0;
+
+    return [
+      Math.round(c * 100),
+      Math.round(m * 100),
+      Math.round(y * 100),
+      Math.round(k * 100),
+    ];
+  }
+
+  function grayscaleRgbToHsl(grayscale_rgb) {
+    const h = 0;
+    const s = 0;
+    const l = Math.round((grayscale_rgb / 255) * 100);
+
+    return [h, s, l];
+  }
+
+  function grayscaleRgbToHex(grayscale_rgb) {
+    const toHex = (value) => value.toString(16).padStart(2, "0");
+
+    const hexColor = `#${toHex(grayscale_rgb)}${toHex(grayscale_rgb)}${toHex(
+      grayscale_rgb
+    )}`;
+
+    return hexColor;
+  }
+
   function colorToLuminosity(r, g, b) {
-    const luminosity = Math.round(0.2126 * r + 0.7152 * g + 0.0722 * b);
+    const luminosity = 0.2126 * r + 0.7152 * g + 0.0722 * b;
     return [luminosity];
   }
 
